@@ -8,8 +8,8 @@ import javax.validation.Payload
 import kotlin.reflect.KClass
 
 @Retention(AnnotationRetention.RUNTIME)
-@Constraint(validatedBy = [DomainNameValidator::class])
-annotation class DomainName(
+@Constraint(validatedBy = [DomainValidator::class])
+annotation class Domain(
     val message: String = "invalid domain name",
     val groups: Array<KClass<*>> = [],
     val payload: Array<KClass<out Payload>> = [],
@@ -17,10 +17,10 @@ annotation class DomainName(
 
 private val domainRegexp = "^([^.]{1,63}\\.)?[^.]{1,63}\\.[^.]{2,63}$".toRegex()
 
-class DomainNameValidator : ConstraintValidator<DomainName, String> {
+class DomainValidator : ConstraintValidator<Domain, String> {
 
     override fun isValid(value: String?, context: ConstraintValidatorContext?): Boolean =
-        isValidDomainName(value)
+        isValidDomain(value)
 }
 
 /**
@@ -31,7 +31,7 @@ class DomainNameValidator : ConstraintValidator<DomainName, String> {
  * - Each label is no longer than 63 characters
  * - Verifies that we can successfully normalize to punycode
  */
-fun isValidDomainName(value: String?): Boolean {
+fun isValidDomain(value: String?): Boolean {
     if (value == null) {
         return false
     }

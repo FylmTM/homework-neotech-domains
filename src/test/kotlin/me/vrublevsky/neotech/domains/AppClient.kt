@@ -7,7 +7,7 @@ import feign.RequestLine
 import feign.jackson.JacksonDecoder
 import feign.jackson.JacksonEncoder
 import feign.slf4j.Slf4jLogger
-import me.vrublevsky.neotech.domains.api.v1.EmptyApiResponse
+import me.vrublevsky.neotech.domains.common.api.EmptyApiResponse
 
 interface AppClient {
 

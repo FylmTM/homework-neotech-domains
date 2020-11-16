@@ -4,7 +4,7 @@ import ch.tutteli.atrium.api.fluent.en_GB.*
 import me.vrublevsky.neotech.domains.parametrized
 import org.junit.jupiter.api.Test
 
-class DomainNameValidatorTest {
+class DomainValidatorTest {
 
     @Test
     fun `test is valid domain name`() {
@@ -60,8 +60,8 @@ class DomainNameValidatorTest {
             ),
         ) { (input, isValid) ->
             feature(
-                description = "isValidDomainName($input) == $isValid",
-                provider = { isValidDomainName(input) }
+                description = "isValidDomain($input) == $isValid",
+                provider = { isValidDomain(input) }
             ) {
                 toBe(isValid)
             }

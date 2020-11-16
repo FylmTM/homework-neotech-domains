@@ -43,6 +43,9 @@ dependencies {
     implementation("io.github.openfeign:feign-jackson:11.0")
     implementation("io.github.openfeign:feign-slf4j:11.0")
 
+    // Utilities
+    implementation("io.github.microutils:kotlin-logging:2.0.3")
+
     // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")

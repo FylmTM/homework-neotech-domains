@@ -7,7 +7,7 @@ name and shows information about this domain name.
 
 Information if domain not exists:
 
-* Current registar
+* Current registrar
 * Expiration date
 
 Information if domain exists:
@@ -16,7 +16,7 @@ Information if domain exists:
 
 ## Requirements
 
-* Support adding new registars
+* Support adding new registrar
 * Minimize request count to external services
 
 ## Non-functional requirements

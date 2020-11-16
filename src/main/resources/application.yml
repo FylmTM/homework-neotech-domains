@@ -26,6 +26,6 @@ neotech:
         enabled: true
       whoisxmlapi:
         enabled: true
-    registar:
+    registrar:
       namecheap:
         enabled: true

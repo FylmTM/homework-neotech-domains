@@ -1,4 +1,4 @@
-package me.vrublevsky.neotech.domains.api.v1
+package me.vrublevsky.neotech.domains.common.api
 
 enum class ApiResponseStatus {
     OK, ERROR
