@@ -22,12 +22,10 @@ management:
 neotech:
   services:
     whois:
-      test:
-        enabled: false
+      cache:
+        enabled: true
       whoisxmlapi:
         enabled: true
     registar:
-      test:
-        enabled: false
       namecheap:
         enabled: true

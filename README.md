@@ -64,3 +64,6 @@ WIP.
   * [ ] Consider using declarative HTTP client (retrofit, feign, ktor client (?))
   * [ ] Make HTTP requests to external services retryable
   * [ ] Tidy-up gradle build file (extract plugin configurations, versions)
+  * [ ] Correctly handle IPv4 and IPv6 when extracting domain name
+  * [ ] Consider limiting parsed hostname to 3 labels (to reduce cache misses)
+  * [ ] Consider providing user-friendly API where you can pass URL
