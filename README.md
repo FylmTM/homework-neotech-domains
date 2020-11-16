@@ -53,10 +53,14 @@ WIP.
     * [ ] Include external service to health
   * [ ] Authentication (do we need one?)
   * [ ] Monitoring
-    * [ ] Metrics (JVM, rps, cache hits/misses)
+    * [ ] Metrics (JVM, rps, cache hits/misses, external service stability)
     * [ ] Tracing
   * [ ] Logging - tune existing, add application logs
   * [ ] Scaling - put some thought into type of scaling that application can support
   * [ ] UI
     * [ ] Correctly handle when service is down (show alert)
   * [ ] Normalize domain price to base currency
+  * [ ] Make services configurable through application configuration
+  * [ ] Consider using declarative HTTP client (retrofit, feign, ktor client (?))
+  * [ ] Make HTTP requests to external services retryable
+  * [ ] Tidy-up gradle build file (extract plugin configurations, versions)

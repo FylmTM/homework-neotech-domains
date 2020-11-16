@@ -1,0 +1,19 @@
+logging:
+  level:
+    # Enable all logging for app
+    me.vrublevsky.neotech.domains: DEBUG
+    # Enable request & response logging for integration tests
+    feign: DEBUG
+
+neotech:
+  integrations:
+    whois:
+      test:
+        enabled: true
+      whoisxmlapi:
+        enabled: true
+    registar:
+      test:
+        enabled: true
+      namecheap:
+        enabled: true

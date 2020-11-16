@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: prod
+  main:
+    banner-mode: off
+  jackson:
+    default-property-inclusion: always # Response should be explicit on what fields are there.
+management:
+  endpoints:
+    enabled-by-default: false # Disable all management endpoints by default, to avoid leaking information.
+    jmx: # We will expose nothing on JMX
+      exposure:
+        include: []
+    web:
+      exposure:
+        include:
+          - health # Expose health endpoint on web
+  endpoint:
+    health:
+      enabled: true # Enable health endpoint
+
+neotech:
+  services:
+    whois:
+      test:
+        enabled: false
+      whoisxmlapi:
+        enabled: true
+    registar:
+      test:
+        enabled: false
+      namecheap:
+        enabled: true

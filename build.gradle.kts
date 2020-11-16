@@ -39,7 +39,9 @@ dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     // HTTP
-    implementation("org.apache.httpcomponents:httpclient")
+    implementation("io.github.openfeign:feign-okhttp:11.0")
+    implementation("io.github.openfeign:feign-jackson:11.0")
+    implementation("io.github.openfeign:feign-slf4j:11.0")
 
     // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
