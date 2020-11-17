@@ -8,4 +8,5 @@ import org.springframework.boot.context.properties.ConstructorBinding
 data class WhoisXMLApiWhoisServiceConfiguration(
     val url: String,
     val apiKey: String,
+    val debug: Boolean,
 )

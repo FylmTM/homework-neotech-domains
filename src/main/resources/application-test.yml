@@ -4,3 +4,14 @@ logging:
     me.vrublevsky.neotech.domains: DEBUG
     # Enable request & response logging for integration tests
     feign: DEBUG
+
+app:
+  integrations:
+    whois:
+      whoisxmlapi:
+        debug: true # Enable detailed logging (including network requests)
+        url: http://localhost:10020 # Points to locally started mock server (see IntegrationTest)
+        api-key: test-api-key
+    registrar:
+      namecheap:
+        enabled: true

@@ -31,7 +31,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     // Spring Data
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    // Nothing yet.
 
     // Spring Utilities
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -41,6 +41,7 @@ dependencies {
 
     // HTTP
     implementation("io.github.openfeign:feign-okhttp:11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("io.github.openfeign:feign-jackson:11.0")
     implementation("io.github.openfeign:feign-slf4j:11.0")
 
@@ -52,6 +53,7 @@ dependencies {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
     testImplementation("ch.tutteli.atrium:atrium-fluent-en_GB:0.13.0")
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.0")
 }
 
 java {
@@ -66,5 +68,6 @@ tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
+        languageVersion = "1.4"
     }
 }

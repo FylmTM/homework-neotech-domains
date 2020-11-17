@@ -1,0 +1,6 @@
+{
+  "ErrorMessage": {
+    "errorCode": "AUTHENTICATE_06",
+    "msg": "You are limited to 50 queries per second. The request is rejected."
+  }
+}

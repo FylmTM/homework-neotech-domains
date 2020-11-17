@@ -20,11 +20,13 @@ management:
       enabled: true # Enable health endpoint
 
 app:
+  # Configure which Whois service should be used.
   whois: whoisxmlapi
   integrations:
     whois:
       whoisxmlapi:
-        url: https://www.whoisxmlapi.com/whoisserver/WhoisService
+        debug: false
+        url: https://www.whoisxmlapi.com
         api-key:
     registrar:
       namecheap:

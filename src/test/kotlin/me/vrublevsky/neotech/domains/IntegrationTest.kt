@@ -1,6 +1,7 @@
 package me.vrublevsky.neotech.domains
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import me.vrublevsky.neotech.domains.mockWebServers.setupMockServers
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -12,15 +13,17 @@ import org.springframework.test.context.ActiveProfiles
 class IntegrationTest {
 
     @Autowired
-    protected lateinit var objectMapper: ObjectMapper
+    private lateinit var objectMapper: ObjectMapper
 
     @LocalServerPort
-    protected var port: Int = 0
+    private var port: Int = 0
 
     lateinit var app: AppClient
 
     @BeforeEach
     fun setUp() {
+        setupMockServers()
+
         app = AppClient.create(port, objectMapper)
     }
 }

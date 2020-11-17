@@ -7,7 +7,7 @@ Below you can find:
 
 * [TODO](#TODO) list for all completed and outstanding tasks.
 * [Design Decisions](#design-decisions) section with explanations on **why** some things
-  are done the way they are done.
+  done the way they are done.
 
 ## Design Decisions
 
@@ -68,3 +68,6 @@ WIP.
   * [ ] Consider limiting parsed hostname to 3 labels (to reduce cache misses)
   * [ ] Consider providing user-friendly API where you can pass URL
   * [ ] Consider cascading whois information retrieval with multiple providers
+  * [ ] Consider handling errors at integration points (e.g. whois service)
+  * [ ] Spend more time exploring "whoisxmlapi" output, to make information retrieval more stable (handle errors, and different formats)
+  * [ ] Start mock servers lazily (to avoid running them when they are not needed)

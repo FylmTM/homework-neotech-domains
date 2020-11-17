@@ -1,0 +1,6 @@
+{
+  "ErrorMessage": {
+    "errorCode": "WHOIS_01",
+    "msg": "The parameter domainName is missing."
+  }
+}
