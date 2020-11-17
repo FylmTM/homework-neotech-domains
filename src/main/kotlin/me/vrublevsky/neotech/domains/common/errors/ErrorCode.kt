@@ -1,4 +1,4 @@
-package me.vrublevsky.neotech.domains.config.errors
+package me.vrublevsky.neotech.domains.common.errors
 
 /**
  * Single-point of knowledge about all application error codes.

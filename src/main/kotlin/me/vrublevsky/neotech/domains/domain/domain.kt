@@ -9,6 +9,6 @@ data class Domain(
 )
 
 data class DomainPrice(
-    val price: BigDecimal,
+    val amount: BigDecimal,
     val currency: Currency,
 )

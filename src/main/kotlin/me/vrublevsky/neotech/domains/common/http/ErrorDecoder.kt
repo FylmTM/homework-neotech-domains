@@ -3,7 +3,7 @@ package me.vrublevsky.neotech.domains.common.http
 import feign.Response
 import feign.codec.ErrorDecoder
 import me.vrublevsky.neotech.domains.common.exceptions.AppException
-import me.vrublevsky.neotech.domains.config.errors.ErrorCode
+import me.vrublevsky.neotech.domains.common.errors.ErrorCode
 import org.springframework.http.HttpStatus
 import java.lang.Exception
 

@@ -1,7 +1,7 @@
 package me.vrublevsky.neotech.domains.integrations.whois.whoisxmlapi
 
 import me.vrublevsky.neotech.domains.domain.Domain
-import me.vrublevsky.neotech.domains.integrations.whois.DomainInformation
+import me.vrublevsky.neotech.domains.integrations.whois.DomainWhoisInformation
 import me.vrublevsky.neotech.domains.integrations.whois.WhoisService
 import mu.KotlinLogging.logger
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
@@ -12,13 +12,13 @@ private val logger = logger {}
 @Service
 @ConditionalOnProperty(
     value = ["app.whois"],
-    havingValue = "whoisxmlapi"
+    havingValue = "WhoisXMLApi"
 )
 class WhoisXMLApiWhoisService(
     private val client: WhoisXMLApiWhoisServiceClient,
 ) : WhoisService {
 
-    override fun getInformation(domain: Domain): DomainInformation? {
+    override fun getInformation(domain: Domain): DomainWhoisInformation? {
         logger.info { "Requesting whois information for $domain" }
         val response = client.get(domain.normalized)
 
@@ -43,7 +43,7 @@ class WhoisXMLApiWhoisService(
             return null
         }
 
-        return DomainInformation(
+        return DomainWhoisInformation(
             registrar = response.record.registrarName,
             expirationDate = response.record.expiresDate
         )

@@ -9,21 +9,35 @@ Below you can find:
 * [Design Decisions](#design-decisions) section with explanations on **why** some things
   done the way they are done.
 
-## Design Decisions
+## Run
 
 WIP.
+
+## Design Decisions
+
+### Configuration
+
+Application defines different sets of configuration, to allow customizing
+behaviour without re-builds (through any means that Spring Boot supports, like env variables)
+
+This includes:
+
+- Specifying Whois service to use
+- Configuring each Whois service
+- Specifying which Registrar services to enable
+- Configuring each Registrar service
 
 ## TODO
 
 * [ ] Backend
   * [ ] Integrations
-    * [ ] Whois
-      * [ ] Whoisxmlapi
+    * [x] Whois
+      * [x] Whoisxmlapi
     * [ ] Registar
       * [ ] Namecheap
-  * [ ] Validation
-    * [ ] Domain
-      * [ ] Support non-english domains (russian, chinese, etc.)
+  * [x] Validation
+    * [x] Domain
+      * [x] Support non-english domains (russian, chinese, etc.)
   * [ ] Domain information retrieval
     * [ ] Information retrieval
     * [ ] Cache domain information with TTL
@@ -71,3 +85,7 @@ WIP.
   * [ ] Consider handling errors at integration points (e.g. whois service)
   * [ ] Spend more time exploring "whoisxmlapi" output, to make information retrieval more stable (handle errors, and different formats)
   * [ ] Start mock servers lazily (to avoid running them when they are not needed)
+  * [ ] Support request batching
+  * [ ] Add API documentation (e.g. Swagger)
+  * [ ] Create mock web server for Namecheap API's
+  * [ ] Fully translate namecheap responses to Kotlin

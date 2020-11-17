@@ -36,14 +36,14 @@ dependencies {
     // Spring Utilities
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     // HTTP
     implementation("io.github.openfeign:feign-okhttp:11.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("io.github.openfeign:feign-jackson:11.0")
     implementation("io.github.openfeign:feign-slf4j:11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml")
 
     // Utilities
     implementation("io.github.microutils:kotlin-logging:2.0.3")

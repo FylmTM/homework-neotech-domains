@@ -1,4 +1,4 @@
-package me.vrublevsky.neotech.domains.config.errors
+package me.vrublevsky.neotech.domains.common.errors
 
 interface ErrorResponse {
     val code: String

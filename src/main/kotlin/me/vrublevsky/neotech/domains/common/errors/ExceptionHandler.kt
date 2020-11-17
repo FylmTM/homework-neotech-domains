@@ -1,4 +1,4 @@
-package me.vrublevsky.neotech.domains.config.errors
+package me.vrublevsky.neotech.domains.common.errors
 
 import me.vrublevsky.neotech.domains.common.api.ApiResponse
 import me.vrublevsky.neotech.domains.common.api.error

@@ -15,3 +15,9 @@ app:
     registrar:
       namecheap:
         enabled: true
+        debug: true
+        url: https://api.sandbox.namecheap.com/xml.response
+        api-key: 43938e4b41b84eceb953c74cebf44fa2
+        api-user: FylmTM
+        api-username: FylmTM
+        api-client-ip: 95.68.90.78

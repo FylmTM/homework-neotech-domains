@@ -1,7 +1,7 @@
 package me.vrublevsky.neotech.domains.integrations.whois.whoisxmlapi
 
 import me.vrublevsky.neotech.domains.common.exceptions.AppException
-import me.vrublevsky.neotech.domains.config.errors.ErrorCode
+import me.vrublevsky.neotech.domains.common.errors.ErrorCode
 import org.springframework.http.HttpStatus
 
 class WhoisXMLApiErrorAppException(error: ErrorMessage) : AppException(

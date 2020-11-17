@@ -1,6 +1,7 @@
 package me.vrublevsky.neotech.domains.common.extensions
 
 import me.vrublevsky.neotech.domains.domain.Domain
+import java.math.BigDecimal
 import java.net.IDN
 
 /**
@@ -12,3 +13,5 @@ fun String.toDomain() = Domain(
     original = this,
     normalized = this.normalizeDomainName()
 )
+
+fun String.toBigDecimal() = BigDecimal(this)

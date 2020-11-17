@@ -6,9 +6,9 @@ import me.vrublevsky.neotech.domains.IntegrationTest
 import me.vrublevsky.neotech.domains.TestDomain
 import me.vrublevsky.neotech.domains.common.exceptions.AppException
 import me.vrublevsky.neotech.domains.common.http.IntegrationRequestFailedAppException
-import me.vrublevsky.neotech.domains.config.errors.ErrorCode
+import me.vrublevsky.neotech.domains.common.errors.ErrorCode
 import me.vrublevsky.neotech.domains.expect
-import me.vrublevsky.neotech.domains.integrations.whois.DomainInformation
+import me.vrublevsky.neotech.domains.integrations.whois.DomainWhoisInformation
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import java.time.OffsetDateTime
@@ -23,7 +23,7 @@ class WhoisXMLApiWhoisServiceTest : IntegrationTest() {
         service
             .getInformation(TestDomain.google)
             .expect
-            .toBe(DomainInformation(
+            .toBe(DomainWhoisInformation(
                 registrar = "MarkMonitor, Inc.",
                 expirationDate = OffsetDateTime.parse("2028-09-13T07:00Z")
             ))

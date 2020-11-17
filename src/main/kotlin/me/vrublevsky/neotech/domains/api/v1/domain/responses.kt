@@ -29,5 +29,10 @@ data class RegisteredDomain(
 ) : DomainStatus
 
 data class FreeDomain(
-    val prices: Map<Registrar, DomainPrice>,
+    val prices: List<RegistrarDomainPrice>,
 ) : DomainStatus
+
+data class RegistrarDomainPrice(
+    val registrar: Registrar,
+    val price: DomainPrice,
+)

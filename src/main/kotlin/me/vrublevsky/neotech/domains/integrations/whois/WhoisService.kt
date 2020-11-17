@@ -10,10 +10,10 @@ interface WhoisService {
      * Return information about registered domain.
      * If domain is not registered return null.
      */
-    fun getInformation(domain: Domain): DomainInformation?
+    fun getInformation(domain: Domain): DomainWhoisInformation?
 }
 
-data class DomainInformation(
+data class DomainWhoisInformation(
     val registrar: Registrar,
     val expirationDate: OffsetDateTime,
 )

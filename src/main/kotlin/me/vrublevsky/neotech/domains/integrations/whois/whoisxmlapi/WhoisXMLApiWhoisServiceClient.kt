@@ -14,7 +14,10 @@ import org.springframework.context.annotation.Configuration
 
 interface WhoisXMLApiWhoisServiceClient {
 
-    @RequestLine("GET /whoisserver/WhoisService?domainName={domainName}")
+    /**
+     * https://whois.whoisxmlapi.com/documentation/making-requests
+     */
+    @RequestLine("GET /whoisserver/WhoisService?domainName={domainName}&outputFormat=json")
     fun get(@Param("domainName") domainName: String): WhoisResponse
 }
 
@@ -25,17 +28,18 @@ class WhoisXMLApiWhoisServiceClientConfiguration {
     fun whoisXMLApiWhoisServiceClient(
         configuration: WhoisXMLApiWhoisServiceConfiguration,
         objectMapper: ObjectMapper,
-    ): WhoisXMLApiWhoisServiceClient {
-        return Feign
-            .builder()
+    ): WhoisXMLApiWhoisServiceClient =
+        Feign.builder()
             .encoder(JacksonEncoder(objectMapper))
             .decoder(JacksonDecoder(objectMapper))
             .errorDecoder(IntegrationErrorDecoder("whoisxmlapi"))
             .logger(Slf4jLogger())
-            .logLevel(if(configuration.debug) Logger.Level.FULL else Logger.Level.BASIC)
+            .logLevel(
+                if (configuration.debug) Logger.Level.FULL
+                else Logger.Level.BASIC
+            )
             .requestInterceptor {
                 it.query("apiKey", configuration.apiKey)
             }
             .target(WhoisXMLApiWhoisServiceClient::class.java, configuration.url)
-    }
 }
