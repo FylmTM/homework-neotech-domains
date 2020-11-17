@@ -19,13 +19,13 @@ management:
     health:
       enabled: true # Enable health endpoint
 
-neotech:
-  services:
+app:
+  whois: whoisxmlapi
+  integrations:
     whois:
-      cache:
-        enabled: true
       whoisxmlapi:
-        enabled: true
+        url: https://www.whoisxmlapi.com/whoisserver/WhoisService
+        api-key:
     registrar:
       namecheap:
         enabled: true

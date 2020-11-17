@@ -2,9 +2,9 @@ package me.vrublevsky.neotech.domains.api.v1.domain
 
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
-import java.math.BigDecimal
+import me.vrublevsky.neotech.domains.domain.DomainPrice
+import me.vrublevsky.neotech.domains.domain.Registrar
 import java.time.OffsetDateTime
-import java.util.*
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -24,11 +24,10 @@ import java.util.*
 interface DomainStatus
 
 data class RegisteredDomain(
-    val registrar: String,
+    val registrar: Registrar,
     val expirationDate: OffsetDateTime,
 ) : DomainStatus
 
 data class FreeDomain(
-    val price: BigDecimal,
-    val currency: Currency,
+    val prices: Map<Registrar, DomainPrice>,
 ) : DomainStatus

@@ -25,7 +25,7 @@ WIP.
     * [ ] Domain
       * [ ] Support non-english domains (russian, chinese, etc.)
   * [ ] Domain information retrieval
-    * [ ] Cascade information retrieval
+    * [ ] Information retrieval
     * [ ] Cache domain information with TTL
   * [ ] Domain price retrieval
     * [ ] Support multiple providers
@@ -67,3 +67,4 @@ WIP.
   * [ ] Correctly handle IPv4 and IPv6 when extracting domain name
   * [ ] Consider limiting parsed hostname to 3 labels (to reduce cache misses)
   * [ ] Consider providing user-friendly API where you can pass URL
+  * [ ] Consider cascading whois information retrieval with multiple providers
