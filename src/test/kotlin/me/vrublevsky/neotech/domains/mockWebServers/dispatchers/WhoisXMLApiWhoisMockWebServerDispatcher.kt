@@ -10,17 +10,17 @@ object WhoisXMLApiWhoisMockWebServerDispatcher : Dispatcher() {
 
     override fun dispatch(request: RecordedRequest): MockResponse {
         if (request.requestUrl?.encodedPath != "/whoisserver/WhoisService") {
-            return mockJsonResponse()
+            return mockJsonResponse(responseCode = 404)
         }
 
         return when (request.requestUrl?.queryParameter("domainName")) {
-            TestDomain.google.original -> mockJsonResponse(
+            TestDomain.google.normalized -> mockJsonResponse(
                 resource = "responses/whoisxmlapi/google.com.json"
             )
-            TestDomain.integrationError.original -> mockJsonResponse(
+            TestDomain.integrationError.normalized -> mockJsonResponse(
                 resource = "responses/whoisxmlapi/error.json"
             )
-            TestDomain.integrationInternalError.original -> mockJsonResponse(
+            TestDomain.integrationInternalError.normalized -> mockJsonResponse(
                 responseCode = 500
             )
             null, "" -> mockJsonResponse(

@@ -27,6 +27,22 @@ This includes:
 - Specifying which Registrar services to enable
 - Configuring each Registrar service
 
+### Price for one year
+
+I have made an assumption that we are interested only in prices for one year duration.
+If that's not the case (talk to PO), then we need extend information returned by registrar to include
+prices with their durations.
+
+**Update:**
+
+Apparently some TLD's are not providing price for 1 year (ai, nu). For those we will first available price.
+I need to revisit this decision later.
+
+
+### TLDs
+
+I am using to name both top-level and second-level domain names.
+
 ## TODO
 
 * [ ] Backend
@@ -89,3 +105,11 @@ This includes:
   * [ ] Add API documentation (e.g. Swagger)
   * [ ] Create mock web server for Namecheap API's
   * [ ] Fully translate namecheap responses to Kotlin
+  * [ ] Include handling of error responses into error decoder for feign
+  * [ ] More testing for namecheap
+  * [ ] Be more specific in all cases why information is missing for TLD
+  * [ ] More tests for non-ascii domains
+  * [ ] Use snapshots to test large serializations (e.g. domain prices for namecheap)
+  * [ ] Avoid using xml mapper holder to hide XML configuration from spring (named autowired / qualifier)
+  * [ ] Find premium domain on namecheap for testing
+  * [ ] Re-visit returning prices for 1 year idea

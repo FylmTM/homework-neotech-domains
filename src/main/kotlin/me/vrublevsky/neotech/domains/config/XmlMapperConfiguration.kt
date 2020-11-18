@@ -7,14 +7,11 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder
 
-
-
-
 @Configuration
 class XmlMapperConfiguration {
 
     @Bean
-    fun xmlMapper(): XmlMapper {
+    fun xmlMapper(): XmlMapperHolder {
         val builder = Jackson2ObjectMapperBuilder()
         val xmlMapper: XmlMapper = builder
             .createXmlMapper(true)
@@ -24,6 +21,10 @@ class XmlMapperConfiguration {
             setterInfo = JsonSetter.Value.forValueNulls(Nulls.AS_EMPTY)
         }
 
-        return xmlMapper
+        return XmlMapperHolder(xmlMapper)
     }
 }
+
+data class XmlMapperHolder(
+    val value: XmlMapper,
+)

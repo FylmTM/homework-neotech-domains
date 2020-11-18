@@ -1,6 +1,10 @@
 package me.vrublevsky.neotech.domains.integrations.registrar.namecheap
 
+import me.vrublevsky.neotech.domains.domain.Domain
+import me.vrublevsky.neotech.domains.integrations.registrar.AvailableDomainRegistrarInformation
 import me.vrublevsky.neotech.domains.integrations.registrar.DomainRegistrarInformation
+import me.vrublevsky.neotech.domains.integrations.registrar.MissingDomainRegistrarInformation
+import me.vrublevsky.neotech.domains.integrations.registrar.NotAvailableDomainRegistrarInformation
 import me.vrublevsky.neotech.domains.integrations.registrar.RegistrarService
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.stereotype.Service
@@ -11,10 +15,35 @@ import org.springframework.stereotype.Service
     havingValue = "true"
 )
 class NamecheapRegistrarService(
-    private val client: NamecheapRegistrarServiceClient
+    private val operations: NamecheapRegistrarOperations
 ) : RegistrarService {
 
-    override fun getInformation(): DomainRegistrarInformation {
-        TODO()
+    override val name: String = "namecheap"
+
+    override fun getInformation(domain: Domain): DomainRegistrarInformation {
+        val domainCheckResult = operations.checkDomain(domain.normalized)
+            ?: return MissingDomainRegistrarInformation
+
+        if (domainCheckResult.isAvailable && domainCheckResult.price != null) {
+            return AvailableDomainRegistrarInformation(
+                price = domainCheckResult.price
+            )
+        }
+
+        if (!domainCheckResult.isAvailable) {
+            return NotAvailableDomainRegistrarInformation
+        }
+
+        val domainPrices = operations.domainPrices()
+
+        val tld = domain.resolveTLD(domainPrices.tldList)
+            ?: return MissingDomainRegistrarInformation
+
+        val price = domainPrices.prices[tld]
+            ?: return MissingDomainRegistrarInformation
+
+        return AvailableDomainRegistrarInformation(
+            price = price
+        )
     }
 }

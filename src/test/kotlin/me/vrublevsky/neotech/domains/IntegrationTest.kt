@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.cache.Cache
+import org.springframework.cache.CacheManager
 import org.springframework.test.context.ActiveProfiles
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -18,6 +20,9 @@ class IntegrationTest {
     @LocalServerPort
     private var port: Int = 0
 
+    @Autowired
+    lateinit var cacheManager: CacheManager
+
     lateinit var app: AppClient
 
     @BeforeEach
@@ -25,5 +30,12 @@ class IntegrationTest {
         setupMockServers()
 
         app = AppClient.create(port, objectMapper)
+
+        // Clear cache before each test
+        cacheManager.cacheNames
+            .map { cacheManager.getCache(it)!! }
+            .forEach(Cache::clear)
     }
+
+    fun cache(name: String) = cacheManager.getCache(name)!!
 }

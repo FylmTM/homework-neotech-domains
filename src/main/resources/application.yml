@@ -5,6 +5,8 @@ spring:
     banner-mode: off
   jackson:
     default-property-inclusion: always # Response should be explicit on what fields are there.
+  xml:
+    ignore: true # Do not allow Spring construct XmlMapper from Jackson
 management:
   endpoints:
     enabled-by-default: false # Disable all management endpoints by default, to avoid leaking information.
@@ -20,8 +22,7 @@ management:
       enabled: true # Enable health endpoint
 
 app:
-  # Configure which Whois service should be used.
-  whois: WhoisXMLApi
+  whois: WhoisXMLApi # Configure which Whois service should be used.
   integrations:
     whois:
       whoisxmlapi:
@@ -32,8 +33,11 @@ app:
       namecheap:
         enabled: true
         debug: false
-        url: https://api.sandbox.namecheap.com/xml.response
-        api-key: 43938e4b41b84eceb953c74cebf44fa2
+        url: https://api.sandbox.namecheap.com
+        api-key:
         api-user: FylmTM
         api-username: FylmTM
         api-client-ip: 95.68.90.78
+        cache-duration:
+          domain-check: 1
+          domain-prices: 60

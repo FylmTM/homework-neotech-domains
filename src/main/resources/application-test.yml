@@ -14,10 +14,9 @@ app:
         api-key: test-api-key
     registrar:
       namecheap:
-        enabled: true
-        debug: true
-        url: https://api.sandbox.namecheap.com/xml.response
-        api-key: 43938e4b41b84eceb953c74cebf44fa2
-        api-user: FylmTM
-        api-username: FylmTM
-        api-client-ip: 95.68.90.78
+        debug: true # Enable detailed logging (including network requests)
+        url: http://localhost:10021 # Points to locally started mock server (see IntegrationTest)
+        api-key: test-api-key
+        api-user: user
+        api-username: username
+        api-client-ip: 127.0.0.1

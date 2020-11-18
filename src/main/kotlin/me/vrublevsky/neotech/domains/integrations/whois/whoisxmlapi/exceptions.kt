@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus
 class WhoisXMLApiErrorAppException(error: ErrorMessage) : AppException(
     httpStatus = HttpStatus.BAD_GATEWAY,
     code = ErrorCode.integrationError,
-    message = "Request to WhoisXMLApi API resulted in error[$error]"
+    message = "Request to WhoisXMLApi API resulted in error: $error]"
 )
 
 class WhoisXMLApiNoRecordErrorAppException : AppException(

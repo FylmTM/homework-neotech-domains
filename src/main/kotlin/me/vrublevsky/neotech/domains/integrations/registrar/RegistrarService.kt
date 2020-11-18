@@ -1,16 +1,27 @@
 package me.vrublevsky.neotech.domains.integrations.registrar
 
+import me.vrublevsky.neotech.domains.domain.Domain
 import me.vrublevsky.neotech.domains.domain.DomainPrice
 
 interface RegistrarService {
 
-    fun getInformation(): DomainRegistrarInformation
+    val name: String
+
+    fun getInformation(domain: Domain): DomainRegistrarInformation
 }
 
+/**
+ * Represents ADT for different result types.
+ */
 sealed class DomainRegistrarInformation
 
-data class FreeDomainRegistrarInformation(
+data class AvailableDomainRegistrarInformation(
+    /**
+     * Price for one year.
+     */
     val price: DomainPrice
 ) : DomainRegistrarInformation()
 
-object PurchasedDomainRegistrarInformation : DomainRegistrarInformation()
+object NotAvailableDomainRegistrarInformation : DomainRegistrarInformation()
+
+object MissingDomainRegistrarInformation : DomainRegistrarInformation()

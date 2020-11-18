@@ -32,7 +32,7 @@ class WhoisXMLApiWhoisServiceTest : IntegrationTest() {
     @Test
     fun `retrieve information for non-existing domain`() {
         service
-            .getInformation(TestDomain.nonExisting)
+            .getInformation(TestDomain.available)
             .expect
             .toBe(null)
     }

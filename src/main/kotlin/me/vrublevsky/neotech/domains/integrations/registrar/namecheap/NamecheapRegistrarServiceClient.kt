@@ -9,6 +9,7 @@ import feign.jackson.JacksonDecoder
 import feign.jackson.JacksonEncoder
 import feign.slf4j.Slf4jLogger
 import me.vrublevsky.neotech.domains.common.http.IntegrationErrorDecoder
+import me.vrublevsky.neotech.domains.config.XmlMapperHolder
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -33,11 +34,11 @@ class NamecheapRegistrarServiceClientConfiguration {
     @Bean
     fun namecheapRegistrarServiceClient(
         configuration: NamecheapRegistrarServiceConfiguration,
-        xmlMapper: XmlMapper,
+        xmlMapper: XmlMapperHolder,
     ): NamecheapRegistrarServiceClient {
         return Feign.builder()
-            .encoder(JacksonEncoder(xmlMapper))
-            .decoder(JacksonDecoder(xmlMapper))
+            .encoder(JacksonEncoder(xmlMapper.value))
+            .decoder(JacksonDecoder(xmlMapper.value))
             .errorDecoder(IntegrationErrorDecoder("namecheap"))
             .logger(Slf4jLogger())
             .logLevel(

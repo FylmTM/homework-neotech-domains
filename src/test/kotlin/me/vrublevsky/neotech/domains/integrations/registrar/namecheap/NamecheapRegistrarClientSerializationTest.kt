@@ -2,9 +2,9 @@ package me.vrublevsky.neotech.domains.integrations.registrar.namecheap
 
 import ch.tutteli.atrium.api.fluent.en_GB.*
 import ch.tutteli.atrium.api.verbs.expect
-import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import me.vrublevsky.neotech.domains.IntegrationTest
+import me.vrublevsky.neotech.domains.config.XmlMapperHolder
 import me.vrublevsky.neotech.domains.expect
 import me.vrublevsky.neotech.domains.mockWebServers.getResource
 import org.junit.jupiter.api.Test
@@ -13,29 +13,23 @@ import org.springframework.beans.factory.annotation.Autowired
 class NamecheapRegistrarServiceResponseSerializationTest : IntegrationTest() {
 
     @Autowired
-    lateinit var xmlMapper: XmlMapper
+    lateinit var xmlMapper: XmlMapperHolder
 
     @Test
     fun `deserialize domains check response`() {
-        val source = getResource("responses/namecheap/namecheap.domains.check.successful.xml")
-        xmlMapper.readValue<NamecheapDomainsCheck>(source)
+        val source = getResource("responses/namecheap/namecheap.domains.check.google.com.xml")
+        xmlMapper.value.readValue<NamecheapDomainsCheck>(source)
             .expect
             .toBe(NamecheapDomainsCheck(
                 status = NamecheapApiResponseStatus.OK,
                 errors = emptyList(),
                 commandResponse = listOf(
                     NamecheapDomainCheckResult(
-                        domain = "domain1.com",
+                        domain = "google.com",
                         available = false,
                         isPremiumName = false,
                         premiumRegistrationPrice = "0".toBigDecimal()
                     ),
-                    NamecheapDomainCheckResult(
-                        domain = "domain2.com",
-                        available = false,
-                        isPremiumName = false,
-                        premiumRegistrationPrice = "0".toBigDecimal()
-                    )
                 )
             ))
     }
@@ -43,7 +37,7 @@ class NamecheapRegistrarServiceResponseSerializationTest : IntegrationTest() {
     @Test
     fun `deserialize domains check response with error`() {
         val source = getResource("responses/namecheap/namecheap.domains.check.error.xml")
-        xmlMapper.readValue<NamecheapDomainsCheck>(source)
+        xmlMapper.value.readValue<NamecheapDomainsCheck>(source)
             .expect
             .toBe(NamecheapDomainsCheck(
                 status = NamecheapApiResponseStatus.ERROR,
@@ -60,9 +54,9 @@ class NamecheapRegistrarServiceResponseSerializationTest : IntegrationTest() {
 
     @Test
     fun `deserialize users getPricing response`() {
-        val source = getResource("responses/namecheap/namecheap.users.getPricing.successful.xml")
+        val source = getResource("responses/namecheap/namecheap.users.getPricing.xml")
         expect {
-            xmlMapper.readValue<NamecheapUsersGetPricing>(source)
+            xmlMapper.value.readValue<NamecheapUsersGetPricing>(source)
         }.notToThrow()
     }
 }
