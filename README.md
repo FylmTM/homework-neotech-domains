@@ -126,3 +126,9 @@ This is effectively a mix of planned work & everything that I encountered on the
   * [ ] Find premium domain on namecheap for testing
   * [ ] Re-visit returning prices for 1 year idea
   * [ ] Handle separately any errors and expected errors (e.g. tld not supported) for domain check
+  * [ ] Add possibility to specify what TLD's registar supports
+  * [ ] Drop "Service" postfix from integrations, it's annoying
+  * [ ] Consider making domain status service cacheable
+  * [ ] Consider making whois service cacheable
+  * [ ] Implement application specific error decoder, to cover failure test cases
+  * [ ] Add body decoding in app client errordecoder for integration tests

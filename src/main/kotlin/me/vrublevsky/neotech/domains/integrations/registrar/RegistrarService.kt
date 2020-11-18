@@ -16,9 +16,6 @@ interface RegistrarService {
 sealed class DomainRegistrarInformation
 
 data class AvailableDomainRegistrarInformation(
-    /**
-     * Price for one year.
-     */
     val price: DomainPrice
 ) : DomainRegistrarInformation()
 

@@ -3,6 +3,8 @@ package me.vrublevsky.neotech.domains.domain
 import java.math.BigDecimal
 import java.util.*
 
+typealias TLD = String
+
 data class Domain(
     val original: String,
     val normalized: String,
@@ -26,8 +28,6 @@ data class Domain(
         return null
     }
 }
-
-typealias TLD = String
 
 data class DomainPrice(
     val amount: BigDecimal,

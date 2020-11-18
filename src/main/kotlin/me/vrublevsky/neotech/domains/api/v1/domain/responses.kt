@@ -2,9 +2,15 @@ package me.vrublevsky.neotech.domains.api.v1.domain
 
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
+import me.vrublevsky.neotech.domains.domain.Domain
 import me.vrublevsky.neotech.domains.domain.DomainPrice
 import me.vrublevsky.neotech.domains.domain.Registrar
 import java.time.OffsetDateTime
+
+data class DomainStatusResponse(
+    val domain: Domain,
+    val status: DomainStatus,
+)
 
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
@@ -17,10 +23,11 @@ import java.time.OffsetDateTime
         name = "registered"
     ),
     JsonSubTypes.Type(
-        value = FreeDomain::class,
-        name = "free"
+        value = AvailableDomain::class,
+        name = "available"
     ),
 )
+
 interface DomainStatus
 
 data class RegisteredDomain(
@@ -28,11 +35,12 @@ data class RegisteredDomain(
     val expirationDate: OffsetDateTime,
 ) : DomainStatus
 
-data class FreeDomain(
+data class AvailableDomain(
     val prices: List<RegistrarDomainPrice>,
 ) : DomainStatus
 
 data class RegistrarDomainPrice(
     val registrar: Registrar,
-    val price: DomainPrice,
+    val available: Boolean,
+    val price: DomainPrice?,
 )

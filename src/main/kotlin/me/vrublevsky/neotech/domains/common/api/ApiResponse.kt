@@ -4,7 +4,7 @@ enum class ApiResponseStatus {
     OK, ERROR
 }
 
-data class ApiResponse<T>(val status: ApiResponseStatus, val payload: T?)
+data class ApiResponse<out T>(val status: ApiResponseStatus, val payload: T?)
 
 fun <T> T.ok() = ApiResponse(ApiResponseStatus.OK, this)
 

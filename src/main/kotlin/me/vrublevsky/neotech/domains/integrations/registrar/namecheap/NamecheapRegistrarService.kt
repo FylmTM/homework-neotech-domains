@@ -18,7 +18,7 @@ class NamecheapRegistrarService(
     private val operations: NamecheapRegistrarOperations
 ) : RegistrarService {
 
-    override val name: String = "namecheap"
+    override val name: String = "Namecheap"
 
     override fun getInformation(domain: Domain): DomainRegistrarInformation {
         val domainCheckResult = operations.checkDomain(domain.normalized)

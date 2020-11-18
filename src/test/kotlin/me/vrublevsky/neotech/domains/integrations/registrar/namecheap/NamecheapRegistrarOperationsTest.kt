@@ -7,10 +7,10 @@ import me.vrublevsky.neotech.domains.TestDomain
 import me.vrublevsky.neotech.domains.common.errors.ErrorCode
 import me.vrublevsky.neotech.domains.common.exceptions.AppException
 import me.vrublevsky.neotech.domains.common.http.IntegrationRequestFailedAppException
+import me.vrublevsky.neotech.domains.exists
 import me.vrublevsky.neotech.domains.expect
 import me.vrublevsky.neotech.domains.expectAll
-import me.vrublevsky.neotech.domains.expectExists
-import me.vrublevsky.neotech.domains.expectNotExists
+import me.vrublevsky.neotech.domains.notExists
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 
@@ -22,7 +22,7 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
     @Test
     fun `check domain for not available domain`() {
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.notAvailable.normalized)
+            .expect.notExists(TestDomain.notAvailable.normalized)
 
         operations.checkDomain(TestDomain.notAvailable.normalized)
             .expect.toBe(
@@ -33,13 +33,13 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
             )
 
         cache(namecheapDomainCheckCache)
-            .expectExists(TestDomain.notAvailable.normalized)
+            .expect.exists(TestDomain.notAvailable.normalized)
     }
 
     @Test
     fun `check domain for available domain`() {
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.available.normalized)
+            .expect.notExists(TestDomain.available.normalized)
 
         operations.checkDomain(TestDomain.available.normalized)
             .expect.toBe(
@@ -50,37 +50,37 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
             )
 
         cache(namecheapDomainCheckCache)
-            .expectExists(TestDomain.available.normalized)
+            .expect.exists(TestDomain.available.normalized)
     }
 
     @Test
     fun `check domain results in error when domain list not found`() {
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.integrationError.normalized)
+            .expect.notExists(TestDomain.integrationError.normalized)
 
         operations.checkDomain(TestDomain.integrationError.normalized)
             .expect.toBe(null)
 
         cache(namecheapDomainCheckCache)
-            .expectExists(TestDomain.integrationError.normalized)
+            .expect.exists(TestDomain.integrationError.normalized)
     }
 
     @Test
     fun `check domain results in error for invalid tld`() {
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.invalidTld.normalized)
+            .expect.notExists(TestDomain.invalidTld.normalized)
 
         operations.checkDomain(TestDomain.invalidTld.normalized)
             .expect.toBe(null)
 
         cache(namecheapDomainCheckCache)
-            .expectExists(TestDomain.invalidTld.normalized)
+            .expect.exists(TestDomain.invalidTld.normalized)
     }
 
     @Test
     fun `check domain result in internal error`() {
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.integrationInternalError.normalized)
+            .expect.notExists(TestDomain.integrationInternalError.normalized)
 
         expect {
             operations.checkDomain(TestDomain.integrationInternalError.normalized)
@@ -89,13 +89,13 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
         }
 
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.integrationInternalError.normalized)
+            .expect.notExists(TestDomain.integrationInternalError.normalized)
     }
 
     @Test
     fun `get domain prices`() {
         cache(namecheapDomainPricesCache)
-            .expectNotExists("")
+            .expect.notExists("domainPrices")
 
         val domainPrices = operations.domainPrices()
         domainPrices.expectAll {
@@ -104,5 +104,8 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
             feature("prices have all tlds") { prices.keys }
                 .containsElementsOf(domainPrices.tldList)
         }
+
+        cache(namecheapDomainPricesCache)
+            .expect.exists("domainPrices")
     }
 }

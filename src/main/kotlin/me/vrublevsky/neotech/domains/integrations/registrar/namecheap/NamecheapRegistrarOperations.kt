@@ -45,7 +45,7 @@ class NamecheapRegistrarOperations(
         )
     }
 
-    @Cacheable(namecheapDomainPricesCache)
+    @Cacheable(namecheapDomainPricesCache, key = "#root.methodName")
     fun domainPrices(): DomainPrices {
         val result = client.getDomainRegisterPricing()
 
