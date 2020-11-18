@@ -8,6 +8,7 @@ Below you can find:
 * [TODO](#TODO) list for all completed and outstanding tasks.
 * [Design Decisions](#design-decisions) section with explanations on **why** some things
   done the way they are done.
+* [Screenshots](#screenshots) to see UI
 
 ## Development
 
@@ -19,8 +20,11 @@ Below you can find:
 ## Build & Run
 
 ```
+export APP_INTEGRATIONS_WHOIS_WHOISXMLAPI_API_KEY=<key>
+export APP_INTEGRATIONS_REGISTRAR_NAMECHEAP_API_KEY=<key>
 ./gradlew bootJar
 java -jar libs/app.jar
+open http://localhost:8080
 ```
 
 ## Design Decisions
@@ -53,82 +57,114 @@ I need to revisit this decision later.
 
 I am using to name both top-level and second-level domain names.
 
+### Vanilla JS website
+
+Because frontend is not focus of this task, I decided to skip all
+modern-era frontend framework shenanigans and pump out a bunch of simple JavaScript.
+
+And I allowed myself to throw in babel standalone compiler, so I can use TypeScript.
+
+Just mish-mash of random JS blobs, like it's 2012 all over again.
+
+**Update:**
+
+I regret this decision.
+
 ## TODO
 
-This is effectively a mix of planned work & everything that I encountered on the go.
+This is a list of things tha I did, and list of things that I would like to do (if this would be real project).
 
-* [ ] Backend
-  * [ ] Integrations
+**Plan:**
+
+* [x] Backend
+  * [x] Integrations
     * [x] Whois
       * [x] Whoisxmlapi
-    * [ ] Registar
-      * [ ] Namecheap
+    * [x] Registar
+      * [x] Namecheap
   * [x] Validation
     * [x] Domain
       * [x] Support non-english domains (russian, chinese, etc.)
-  * [ ] Domain information retrieval
-    * [ ] Information retrieval
-    * [ ] Cache domain information with TTL
-  * [ ] Domain price retrieval
-    * [ ] Support multiple providers
-    * [ ] Cache domain price with TTL
-  * [ ] Environments - development, testing, staging, production
-  * [ ] Tests
-    * [ ] Integration tests with real services under specific flag (to be run on CI only)
-  * [ ] Important
-    * [ ] Support multiple currencies for price
-    * [ ] Store price as BigDecimal (don't loose precision)
-* [ ] Frontend
-  * [ ] Favicon!
-  * [ ] Single HTML page with vanilla JS
-  * [ ] Handle errors (connectivity, invalid response, validations)
-* [ ] Improvements
-  * [ ] Code quality (formatting, linter)
-  * [ ] Build docker image
-    * [ ] Consider Jib
-  * [ ] Sane default JVM configuration (heap sizes, GC type, etc.)
+  * [x] Domain information retrieval
+    * [x] Information retrieval
+  * [x] Domain price retrieval
+    * [x] Support multiple providers
+    * [x] Cache domain price with TTL
+  * [x] Environments:
+    * [x] prod
+    * [x] test
+  * [x] Tests
+    * [x] Integration tests with real services under specific flag (to be run on CI only)
+  * [x] Important
+    * [x] Support multiple currencies for price
+    * [x] Store price as BigDecimal (don't loose precision)
+  * [x] External configuration
+* [x] Frontend
+  * [x] Single HTML page with vanilla JS
+  * [x] Handle errors (connectivity, invalid response, validations)
+
+**Improvements:**
+
+* Infrastructure 
+  * [ ] Docker image (consider Jib)
+  * [ ] JVM configuration (heap, GC, etc.)
     * [ ] Make sure they are docker/k8s friendly (consider non-heap memory)
-  * [ ] Hardening
-    * [ ] Security (CSP?, CORS?, something else?)
-    * [ ] Rate limiting
-    * [ ] Graceful shutdown
-    * [ ] Include external service to health
-  * [ ] Authentication (do we need one?)
-  * [ ] Monitoring
-    * [ ] Metrics (JVM, rps, cache hits/misses, external service stability)
-    * [ ] Tracing
-  * [ ] Logging - tune existing, add application logs
-  * [ ] Scaling - put some thought into type of scaling that application can support
-  * [ ] UI
-    * [ ] Correctly handle when service is down (show alert)
-  * [ ] Normalize domain price to base currency
-  * [ ] Make services configurable through application configuration
-  * [ ] Consider using declarative HTTP client (retrofit, feign, ktor client (?))
-  * [ ] Make HTTP requests to external services retryable
+  * [ ] Security (CSP?, CORS?, something else?)
+  * [ ] Rate limiting (is it public service?)
+  * [ ] A graceful shutdown (ensure no requests lost in dynamic K8s world)
+  * [ ] Create health indicators for integrations
+  * [ ] Authentication (do we need one?, jwt for service-to-service?)
+  * [ ] Metrics (JVM, rps, cache hits/misses, external service stability)
+  * [ ] Tracing (request id, user id, other MDC)
+  * [ ] Logging (tune existing, add logging for all interactions)
+* Tooling
+  * [ ] Code quality (formatting, linter)
   * [ ] Tidy-up gradle build file (extract plugin configurations, versions)
-  * [ ] Correctly handle IPv4 and IPv6 when extracting domain name
-  * [ ] Consider limiting parsed hostname to 3 labels (to reduce cache misses)
-  * [ ] Consider providing user-friendly API where you can pass URL
-  * [ ] Consider cascading whois information retrieval with multiple providers
-  * [ ] Consider handling errors at integration points (e.g. whois service)
-  * [ ] Spend more time exploring "whoisxmlapi" output, to make information retrieval more stable (handle errors, and different formats)
-  * [ ] Start mock servers lazily (to avoid running them when they are not needed)
-  * [ ] Support request batching
   * [ ] Add API documentation (e.g. Swagger)
-  * [ ] Create mock web server for Namecheap API's
-  * [ ] Fully translate namecheap responses to Kotlin
-  * [ ] Include handling of error responses into error decoder for feign
-  * [ ] More testing for namecheap
-  * [ ] Be more specific in all cases why information is missing for TLD
-  * [ ] More tests for non-ascii domains
-  * [ ] Use snapshots to test large serializations (e.g. domain prices for namecheap)
-  * [ ] Avoid using xml mapper holder to hide XML configuration from spring (named autowired / qualifier)
-  * [ ] Find premium domain on namecheap for testing
+* Architecture
+  * [ ] Scaling - put some thought into type of scaling that application can support
+  * [ ] Consider supporting doing domain status request in batches
+      * [ ] Consider supporting async domain status retrieval for large batches
+        * Accessing external services might take long time, to just wait in a single request.
+          This would allow use cases like re-read statuses for all known domains.
+  * [ ] Be more specific why Registrar do not provide price for domain
   * [ ] Re-visit returning prices for 1 year idea
-  * [ ] Handle separately any errors and expected errors (e.g. tld not supported) for domain check
-  * [ ] Add possibility to specify what TLD's registar supports
+  * [ ] Add possibility to specify what TLD's registrar supports (e.g. avoid asking Namecheap for .lv TLD)
+* Backend
+  * [ ] Correctly handle IPv4 and IPv6 when extracting domain name (reject them)
+  * [ ] Normalize domain price to base currency (e.g. retrieving price from RU registrar in RUB and show it in EUR)
+  * [ ] Consider making request to external services retryable (might incur additional costs)
+  * [x] Consider limiting parsed hostname to 3 labels (to reduce cache misses)
+  * [ ] Consider providing user-friendly API where you can pass any valid URL
+  * [ ] Consider cascading whois information retrieval with multiple providers
+  * [ ] Avoid using xml mapper holder to hide XML configuration from spring (named autowired / qualifier)
   * [ ] Drop "Service" postfix from integrations, it's annoying
-  * [ ] Consider making domain status service cacheable
-  * [ ] Consider making whois service cacheable
-  * [ ] Implement application specific error decoder, to cover failure test cases
-  * [ ] Add body decoding in app client errordecoder for integration tests
+  * [ ] Consider making domain status service cacheable (need to discuss business use case)
+  * [ ] Apply scaling on amount according to currency
+* Integrations
+  * WhoisXMLApi
+    * [ ] Cache Whois information retrieval (need to read more about how whois services work)
+    * [ ] Make client response parsing more stable (consider format mismatches, different errors, etc.)
+    * [ ] Custom error decoder for http client
+    * [ ] More intelligent error handling required
+    * [ ] Consider making whois requests cacheable (need to discuss business use case)
+  * Namecheap
+    * [ ] Fully translate namecheap responses to Kotlin classes
+    * [ ] Custom error decoder for http client
+    * [ ] Need more test coverage on various edge cases
+    * [ ] Find premium domain on namecheap for testing
+* Tests
+  * [ ] Start mock servers lazily (to avoid running them for tests that do not need them)
+  * [x] Create mock web server for Namecheap API's
+  * [ ] Add test coverage for non-ascii domain against integrations
+  * [ ] Use snapshots to test large serializations (e.g. domain prices for namecheap)
+  * [ ] Add body decoding in app client error decoder for integration tests (to allow testing error responses)
+* UI
+  * [ ] Correctly handle when service is down
+
+## Screenshots
+
+![available_has_price](./images/available_has_price.png)
+![available_no_price.png](./images/available_no_price.png)
+![not_available.png](./images/not_available.png)
+![error](./images/error.png)

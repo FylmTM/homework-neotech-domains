@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neotech Domains</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <style>
+        .nt-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="nt-container">
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Domain Status
+            </h1>
+            <form id="getStatusForm">
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input id="domainName" class="input" type="text" placeholder="Domain Name">
+                    </div>
+                    <div class="control">
+                        <button class="button is-info" type="submit">
+                            Get
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="mt-5">
+                <div id="result" class="notification">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script>
+  Babel.registerPreset("app-preset", {
+    presets: [
+      [Babel.availablePresets["typescript"], { allExtensions: true }],
+    ],
+  });
+</script>
+
+<script type="text/babel" src="script.ts" data-type="module" data-presets="app-preset"></script>
+</body>
+</html>

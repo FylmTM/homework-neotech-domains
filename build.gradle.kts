@@ -50,6 +50,9 @@ dependencies {
     // Utilities
     implementation("io.github.microutils:kotlin-logging:2.0.3")
 
+    // Development
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+
     // Testing
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
