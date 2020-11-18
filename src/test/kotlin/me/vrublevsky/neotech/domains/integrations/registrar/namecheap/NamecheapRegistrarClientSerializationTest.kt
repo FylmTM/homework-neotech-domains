@@ -36,7 +36,7 @@ class NamecheapRegistrarServiceResponseSerializationTest : IntegrationTest() {
 
     @Test
     fun `deserialize domains check response with error`() {
-        val source = getResource("responses/namecheap/namecheap.domains.check.error.xml")
+        val source = getResource("responses/namecheap/namecheap.domains.check.error_domainlist_empty.xml")
         xmlMapper.value.readValue<NamecheapDomainsCheck>(source)
             .expect
             .toBe(NamecheapDomainsCheck(

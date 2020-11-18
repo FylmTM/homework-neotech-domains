@@ -9,9 +9,19 @@ Below you can find:
 * [Design Decisions](#design-decisions) section with explanations on **why** some things
   done the way they are done.
 
-## Run
+## Development
 
-WIP.
+```
+# Run all tests
+./gradlew test
+```
+
+## Build & Run
+
+```
+./gradlew bootJar
+java -jar libs/app.jar
+```
 
 ## Design Decisions
 
@@ -44,6 +54,8 @@ I need to revisit this decision later.
 I am using to name both top-level and second-level domain names.
 
 ## TODO
+
+This is effectively a mix of planned work & everything that I encountered on the go.
 
 * [ ] Backend
   * [ ] Integrations
@@ -113,3 +125,4 @@ I am using to name both top-level and second-level domain names.
   * [ ] Avoid using xml mapper holder to hide XML configuration from spring (named autowired / qualifier)
   * [ ] Find premium domain on namecheap for testing
   * [ ] Re-visit returning prices for 1 year idea
+  * [ ] Handle separately any errors and expected errors (e.g. tld not supported) for domain check

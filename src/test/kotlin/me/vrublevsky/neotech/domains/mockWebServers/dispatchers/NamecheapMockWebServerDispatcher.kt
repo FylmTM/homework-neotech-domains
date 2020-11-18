@@ -17,7 +17,7 @@ object NamecheapMockWebServerDispatcher : Dispatcher() {
 
         if (command == "namecheap.domains.check") {
             return when (request.requestUrl?.queryParameter("DomainList")) {
-                TestDomain.google.normalized -> mockXmlResponse(
+                TestDomain.notAvailable.normalized -> mockXmlResponse(
                     resource = "responses/namecheap/namecheap.domains.check.google.com.xml"
                 )
                 TestDomain.available.normalized -> mockXmlResponse(
@@ -26,8 +26,11 @@ object NamecheapMockWebServerDispatcher : Dispatcher() {
                 TestDomain.integrationInternalError.normalized -> mockXmlResponse(
                     responseCode = 500
                 )
+                TestDomain.invalidTld.normalized -> mockXmlResponse(
+                    resource = "responses/namecheap/namecheap.domains.check.error_tld_not_found.xml"
+                )
                 null, "", TestDomain.integrationError.normalized -> mockXmlResponse(
-                    resource = "responses/namecheap/namecheap.domains.check.error.xml"
+                    resource = "responses/namecheap/namecheap.domains.check.error_domainlist_empty.xml"
                 )
                 else -> mockXmlResponse(
                     responseCode = 400

@@ -21,7 +21,7 @@ class WhoisXMLApiWhoisServiceTest : IntegrationTest() {
     @Test
     fun `retrieve information for existing domain`() {
         service
-            .getInformation(TestDomain.google)
+            .getInformation(TestDomain.notAvailable)
             .expect
             .toBe(DomainWhoisInformation(
                 registrar = "MarkMonitor, Inc.",

@@ -22,9 +22,9 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
     @Test
     fun `check domain for not available domain`() {
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.google.normalized)
+            .expectNotExists(TestDomain.notAvailable.normalized)
 
-        operations.checkDomain(TestDomain.google.normalized)
+        operations.checkDomain(TestDomain.notAvailable.normalized)
             .expect.toBe(
                 CheckDomainResult(
                     isAvailable = false,
@@ -33,7 +33,7 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
             )
 
         cache(namecheapDomainCheckCache)
-            .expectExists(TestDomain.google.normalized)
+            .expectExists(TestDomain.notAvailable.normalized)
     }
 
     @Test
@@ -54,18 +54,27 @@ class NamecheapRegistrarOperationsTest : IntegrationTest() {
     }
 
     @Test
-    fun `check domain results in error`() {
+    fun `check domain results in error when domain list not found`() {
         cache(namecheapDomainCheckCache)
             .expectNotExists(TestDomain.integrationError.normalized)
 
-        expect {
-            operations.checkDomain(TestDomain.integrationError.normalized)
-        }.toThrow<NamecheapErrorAppException> {
-            feature(AppException::code).toBe(ErrorCode.integrationError)
-        }
+        operations.checkDomain(TestDomain.integrationError.normalized)
+            .expect.toBe(null)
 
         cache(namecheapDomainCheckCache)
-            .expectNotExists(TestDomain.integrationError.normalized)
+            .expectExists(TestDomain.integrationError.normalized)
+    }
+
+    @Test
+    fun `check domain results in error for invalid tld`() {
+        cache(namecheapDomainCheckCache)
+            .expectNotExists(TestDomain.invalidTld.normalized)
+
+        operations.checkDomain(TestDomain.invalidTld.normalized)
+            .expect.toBe(null)
+
+        cache(namecheapDomainCheckCache)
+            .expectExists(TestDomain.invalidTld.normalized)
     }
 
     @Test

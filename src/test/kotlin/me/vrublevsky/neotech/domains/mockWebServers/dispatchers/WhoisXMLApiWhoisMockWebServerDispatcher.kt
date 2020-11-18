@@ -14,7 +14,7 @@ object WhoisXMLApiWhoisMockWebServerDispatcher : Dispatcher() {
         }
 
         return when (request.requestUrl?.queryParameter("domainName")) {
-            TestDomain.google.normalized -> mockJsonResponse(
+            TestDomain.notAvailable.normalized -> mockJsonResponse(
                 resource = "responses/whoisxmlapi/google.com.json"
             )
             TestDomain.integrationError.normalized -> mockJsonResponse(

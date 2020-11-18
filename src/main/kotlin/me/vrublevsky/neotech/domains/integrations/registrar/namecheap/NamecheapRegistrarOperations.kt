@@ -1,5 +1,6 @@
 package me.vrublevsky.neotech.domains.integrations.registrar.namecheap
 
+import me.vrublevsky.neotech.domains.common.data.Currencies
 import me.vrublevsky.neotech.domains.common.extensions.toCurrency
 import me.vrublevsky.neotech.domains.domain.DomainPrice
 import me.vrublevsky.neotech.domains.domain.TLD
@@ -17,8 +18,13 @@ class NamecheapRegistrarOperations(
     @Cacheable(namecheapDomainCheckCache)
     fun checkDomain(domainName: String): CheckDomainResult? {
         val result = client.domainsCheck(domainName)
+
+        // There are multiple reasons why this could be an error.
+        // Including - not supporting particular TLD.
+        // For this reason, we are not throwing exception, but just returning null.
+        // There is no info!
         if (result.status == NamecheapApiResponseStatus.ERROR) {
-            throw NamecheapErrorAppException(result.errors)
+            return null
         }
 
         val domain = result.commandResponse.find { it.domain == domainName }
@@ -29,7 +35,7 @@ class NamecheapRegistrarOperations(
                 amount = domain.premiumRegistrationPrice,
                 // Namecheap does not include currency in domain check,
                 // so we are assuming it to be USD
-                currency = "USD".toCurrency()
+                currency = Currencies.USD
             )
         } else null
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApiResponse Status="ERROR" xmlns="http://api.namecheap.com/xml.response">
+  <Errors>
+    <Error Number="2030280">Tld for 'domain.invalidtld' is not found</Error>
+  </Errors>
+  <Warnings />
+  <RequestedCommand>namecheap.domains.check</RequestedCommand>
+  <CommandResponse Type="namecheap.domains.check" />
+  <Server>PHX01SBAPIEXT02</Server>
+  <GMTTimeDifference>--5:00</GMTTimeDifference>
+  <ExecutionTime>0.015</ExecutionTime>
+</ApiResponse>
