@@ -30,6 +30,17 @@ class WhoisXMLApiWhoisServiceTest : IntegrationTest() {
     }
 
     @Test
+    fun `retrieve information for facebook`() {
+        service
+            .getInformation(TestDomain.facebook)
+            .expect
+            .toBe(DomainWhoisInformation(
+                registrar = "RegistrarSafe, LLC",
+                expirationDate = OffsetDateTime.parse("2028-03-30T04:00Z")
+            ))
+    }
+
+    @Test
     fun `retrieve information for non-existing domain`() {
         service
             .getInformation(TestDomain.available)

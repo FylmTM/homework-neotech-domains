@@ -8,4 +8,7 @@ object TestDomain {
     val invalidTld = "domain.invalidtld".toDomain()
     val integrationError = "error.com".toDomain()
     val integrationInternalError = "error-internal.com".toDomain()
+
+    // Specific
+    val facebook = "facebook.com".toDomain()
 }

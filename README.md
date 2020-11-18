@@ -155,6 +155,7 @@ This is a list of things tha I did, and list of things that I would like to do (
     * [ ] Need more test coverage on various edge cases
     * [ ] Find premium domain on namecheap for testing
 * Tests
+  * [ ] Need to create test harness of ~100 different domains to test different use-cases (and check integrations code)
   * [ ] Start mock servers lazily (to avoid running them for tests that do not need them)
   * [x] Create mock web server for Namecheap API's
   * [ ] Add test coverage for non-ascii domain against integrations
@@ -162,6 +163,7 @@ This is a list of things tha I did, and list of things that I would like to do (
   * [ ] Add body decoding in app client error decoder for integration tests (to allow testing error responses)
 * UI
   * [ ] Correctly handle when service is down
+  * [ ] Add loading indicator
 
 ## Screenshots
 

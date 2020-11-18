@@ -15,7 +15,7 @@ data class WhoisResponse(
 data class WhoisRecord(
     val dataError: String?,
     val registrarName: String?,
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssX")
     val expiresDate: OffsetDateTime?,
 )
 
