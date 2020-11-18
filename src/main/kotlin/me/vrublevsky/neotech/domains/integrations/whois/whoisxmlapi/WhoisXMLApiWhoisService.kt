@@ -36,13 +36,6 @@ class WhoisXMLApiWhoisService(
             return null
         }
 
-        // If any of information we need is missing,
-        // consider information to be not available
-        if (response.record.expiresDate == null
-            || response.record.registrarName == null) {
-            return null
-        }
-
         return DomainWhoisInformation(
             registrar = response.record.registrarName,
             expirationDate = response.record.expiresDate

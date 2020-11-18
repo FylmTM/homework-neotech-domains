@@ -31,8 +31,8 @@ data class DomainStatusResponse(
 interface DomainStatus
 
 data class RegisteredDomain(
-    val registrar: Registrar,
-    val expirationDate: OffsetDateTime,
+    val registrar: Registrar?,
+    val expirationDate: OffsetDateTime?,
 ) : DomainStatus
 
 data class AvailableDomain(

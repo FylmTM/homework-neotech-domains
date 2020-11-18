@@ -1,0 +1,50 @@
+{"WhoisRecord": {
+  "domainName": "inbox.lv",
+  "parseCode": 0,
+  "audit": {
+    "createdDate": "2020-11-17 20:12:14 UTC",
+    "updatedDate": "2020-11-17 20:12:14 UTC"
+  },
+  "registryData": {
+    "updatedDate": "2020-11-17T18:12:24.168657+00:00",
+    "registrant": {
+      "name": "INBOKSS, SIA",
+      "street1": "Matrozu iela 15,",
+      "city": "Riga",
+      "postalCode": "LV-1048",
+      "country": "Latvija",
+      "email": "chelnov@co.inbox.lv",
+      "telephone": "371 26545588",
+      "rawText": "Type: Legal person\u000aName: INBOKSS, SIA\u000aEmail: chelnov@co.inbox.lv\u000aPhone: +371 26545588\u000aAddress: Matrozu iela 15, Riga, LV-1048, Latvija\u000aRegNr: 40003560720"
+    },
+    "technicalContact": {
+      "name": "Type: Natural person",
+      "country": "Latvija",
+      "rawText": "Type: Natural person\u000aVisit: https://www.nic.lv/whois/contact/inbox.lv to contact."
+    },
+    "domainName": "inbox.lv",
+    "nameServers": {
+      "rawText": "ns1.inbox.lv\u000ans2.inbox.lv\u000ans3.inbokss.com\u000a",
+      "hostNames": [
+        "ns1.inbox.lv",
+        "ns2.inbox.lv",
+        "ns3.inbokss.com"
+      ],
+      "ips": [
+      ]
+    },
+    "status": "active",
+    "rawText": "[Domain]\u000aDomain: inbox.lv\u000aStatus: active\u000a\u000a[Holder]\u000aType: Legal person\u000aName: INBOKSS, SIA\u000aEmail: chelnov@co.inbox.lv\u000aPhone: +371 26545588\u000aAddress: Matrozu iela 15, Riga, LV-1048, Latvija\u000aRegNr: 40003560720\u000a\u000a[Tech]\u000aType: Natural person\u000aVisit: https://www.nic.lv/whois/contact/inbox.lv to contact.\u000a\u000a[Nservers]\u000aNserver: ns1.inbox.lv\u000aNserver: ns2.inbox.lv\u000aNserver: ns3.inbokss.com\u000a\u000a[Whois]\u000aUpdated: 2020-11-17T18:12:24.168657+00:00\u000a\u000a[Disclaimer]\u000a% The WHOIS service is provided solely for informational purposes.\u000a%\u000a% It is permitted to use the WHOIS service only for technical or administrative\u000a% needs associated with the operation of the Internet or in order to contact\u000a% the domain name holder over legal problems.\u000a%\u000a% Requestor will not use information obtained using WHOIS:\u000a% * To allow, enable or in any other way to support sending of unsolicited mails (spam)\u000a% * for any kind of advertising\u000a% * to disrupt Internet stability and security\u000a%\u000a% It is not permitted to obtain (including copying) or re-use in any form or\u000a% by any means all or quantitatively or qualitatively significant part\u000a% of the WHOIS without NIC's express permission.",
+    "parseCode": 3312,
+    "header": "",
+    "strippedText": "[Domain]\u000aDomain: inbox.lv\u000aStatus: active\u000a[Holder]\u000aType: Legal person\u000aName: INBOKSS, SIA\u000aEmail: chelnov@co.inbox.lv\u000aPhone: +371 26545588\u000aAddress: Matrozu iela 15, Riga, LV-1048, Latvija\u000aRegNr: 40003560720\u000a[Tech]\u000aType: Natural person\u000aVisit: https://www.nic.lv/whois/contact/inbox.lv to contact.\u000a[Nservers]\u000aNserver: ns1.inbox.lv\u000aNserver: ns2.inbox.lv\u000aNserver: ns3.inbokss.com\u000a[Whois]\u000aUpdated: 2020-11-17T18:12:24.168657+00:00\u000a[Disclaimer]\u000a% The WHOIS service is provided solely for informational purposes.\u000a%\u000a% It is permitted to use the WHOIS service only for technical or administrative\u000a% needs associated with the operation of the Internet or in order to contact\u000a% the domain name holder over legal problems.\u000a%\u000a% Requestor will not use information obtained using WHOIS:\u000a% * To allow, enable or in any other way to support sending of unsolicited mails (spam)\u000a% * for any kind of advertising\u000a% * to disrupt Internet stability and security\u000a%\u000a% It is not permitted to obtain (including copying) or re-use in any form or\u000a% by any means all or quantitatively or qualitatively significant part\u000a% of the WHOIS without NIC's express permission.\u000a",
+    "audit": {
+      "createdDate": "2020-11-17 20:12:14 UTC",
+      "updatedDate": "2020-11-17 20:12:14 UTC"
+    },
+    "updatedDateNormalized": "2020-11-17 18:12:24 UTC",
+    "whoisServer": "whois.nic.lv"
+  },
+  "contactEmail": "chelnov@co.inbox.lv",
+  "domainNameExt": ".lv"
+}}

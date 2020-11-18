@@ -10,5 +10,6 @@ object TestDomain {
     val integrationInternalError = "error-internal.com".toDomain()
 
     // Specific
-    val facebook = "facebook.com".toDomain()
+    val facebookCom = "facebook.com".toDomain()
+    val inboxLv = "inbox.lv".toDomain()
 }

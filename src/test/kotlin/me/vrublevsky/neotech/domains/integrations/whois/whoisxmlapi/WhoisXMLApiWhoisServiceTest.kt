@@ -32,11 +32,22 @@ class WhoisXMLApiWhoisServiceTest : IntegrationTest() {
     @Test
     fun `retrieve information for facebook`() {
         service
-            .getInformation(TestDomain.facebook)
+            .getInformation(TestDomain.facebookCom)
             .expect
             .toBe(DomainWhoisInformation(
                 registrar = "RegistrarSafe, LLC",
                 expirationDate = OffsetDateTime.parse("2028-03-30T04:00Z")
+            ))
+    }
+
+    @Test
+    fun `retrieve information for inbox`() {
+        service
+            .getInformation(TestDomain.inboxLv)
+            .expect
+            .toBe(DomainWhoisInformation(
+                registrar = null,
+                expirationDate = null
             ))
     }
 

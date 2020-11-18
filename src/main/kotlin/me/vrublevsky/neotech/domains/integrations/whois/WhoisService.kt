@@ -14,6 +14,6 @@ interface WhoisService {
 }
 
 data class DomainWhoisInformation(
-    val registrar: Registrar,
-    val expirationDate: OffsetDateTime,
+    val registrar: Registrar?,
+    val expirationDate: OffsetDateTime?,
 )

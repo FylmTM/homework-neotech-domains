@@ -144,6 +144,8 @@ This is a list of things tha I did, and list of things that I would like to do (
   * [ ] Add validation tests for endpoints
 * Integrations
   * WhoisXMLApi
+    * [x] Some domains have Whois information, but do not have registrar & expires information
+      * [ ] Could it be that whois return information, but domain is actually free?
     * [ ] Cache Whois information retrieval (need to read more about how whois services work)
     * [ ] Make client response parsing more stable (consider format mismatches, different errors, etc.)
     * [ ] Custom error decoder for http client

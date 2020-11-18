@@ -23,8 +23,11 @@ object WhoisXMLApiWhoisMockWebServerDispatcher : Dispatcher() {
             TestDomain.integrationInternalError.normalized -> mockJsonResponse(
                 responseCode = 500
             )
-            TestDomain.facebook.normalized -> mockJsonResponse(
+            TestDomain.facebookCom.normalized -> mockJsonResponse(
                 resource = "responses/whoisxmlapi/facebook.com.json"
+            )
+            TestDomain.inboxLv.normalized -> mockJsonResponse(
+                resource = "responses/whoisxmlapi/inbox.lv.json"
             )
             null, "" -> mockJsonResponse(
                 resource = "responses/whoisxmlapi/error_domain_name_missing.json"

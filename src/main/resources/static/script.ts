@@ -55,8 +55,8 @@ function showResponse({ domain, status }: DomainStatusResponse) {
       <b>Information:</b>
       <ul>
         <li>Status: ${status.status}</li>
-        <li>Registrar: ${status.registrar}</li>
-        <li>Expires: ${status.expirationDate}</li>
+        <li>Registrar: a${status.registrar || "-"}</li>
+        <li>Expires: ${status.expirationDate || "-"}</li>
       </ul>
       `;
       break;
@@ -132,8 +132,8 @@ type DomainStatus =
 
 interface RegisteredDomain {
   status: "registered";
-  registrar: string;
-  expirationDate: string;
+  registrar: string | undefined;
+  expirationDate: string | undefined;
 }
 
 interface AvailableDomain {
