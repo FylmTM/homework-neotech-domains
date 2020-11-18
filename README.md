@@ -141,6 +141,7 @@ This is a list of things tha I did, and list of things that I would like to do (
   * [ ] Drop "Service" postfix from integrations, it's annoying
   * [ ] Consider making domain status service cacheable (need to discuss business use case)
   * [ ] Apply scaling on amount according to currency
+  * [ ] Add validation tests for endpoints
 * Integrations
   * WhoisXMLApi
     * [ ] Cache Whois information retrieval (need to read more about how whois services work)
