@@ -122,6 +122,7 @@ This is a list of things tha I did, and list of things that I would like to do (
   * [ ] Tidy-up gradle build file (extract plugin configurations, versions)
   * [ ] Add API documentation (e.g. Swagger)
 * Architecture
+  * [ ] Consider migrating to flux & coroutines (allows better vertical scaling, but requires development time investment)
   * [ ] Scaling - put some thought into type of scaling that application can support
   * [ ] Consider supporting doing domain status request in batches
       * [ ] Consider supporting async domain status retrieval for large batches
