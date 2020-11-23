@@ -12,9 +12,19 @@ Below you can find:
 
 ## Development
 
+### Backend
+
 ```
 # Run all tests
 ./gradlew test
+```
+
+### Frontend
+
+```
+cd app
+npm install
+npm start
 ```
 
 ## Build & Run
@@ -170,7 +180,4 @@ This is a list of things tha I did, and list of things that I would like to do (
 
 ## Screenshots
 
-![available_has_price](./images/available_has_price.png)
-![available_no_price.png](./images/available_no_price.png)
-![not_available.png](./images/not_available.png)
-![error](./images/error.png)
+![app](./images/app.png)
