@@ -20,6 +20,10 @@ management:
   endpoint:
     health:
       enabled: true # Enable health endpoint
+logging:
+  level:
+    # Enable request & response logging for integration tests
+    feign: DEBUG
 
 app:
   whois: WhoisXMLApi # Configure which Whois service should be used.

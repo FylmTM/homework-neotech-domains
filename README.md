@@ -19,22 +19,20 @@ Below you can find:
 ./gradlew test
 ```
 
+```
+export APP_INTEGRATIONS_WHOIS_WHOISXMLAPI_API_KEY=<key>
+export APP_INTEGRATIONS_REGISTRAR_NAMECHEAP_API_KEY=<key>
+./gradlew bootJar
+java -jar libs/app.jar
+```
+
 ### Frontend
 
 ```
 cd app
 npm install
 npm start
-```
-
-## Build & Run
-
-```
-export APP_INTEGRATIONS_WHOIS_WHOISXMLAPI_API_KEY=<key>
-export APP_INTEGRATIONS_REGISTRAR_NAMECHEAP_API_KEY=<key>
-./gradlew bootJar
-java -jar libs/app.jar
-open http://localhost:8080
+open http://localhost:3000
 ```
 
 ## Design Decisions
